@@ -1,22 +1,22 @@
 <!DOCTYPE html>
 <html>
-<head>
-    <link rel="stylesheet" href="css/options.css">
-</head>
-<body>
+    <head>
+        <link rel="stylesheet" href="css/options.css">
+    </head>
+    <body>
+        <div class="field">
+            <label class="field__label" for="users">GitHub Users:</label>
+            <input class="field__input" type="text" id="users" />
+            <div class="field__instructions">
+                Comma-separated list of GitHub users whose public Gists will be made available for copying.
+            </div>
+        </div>
 
-<div class="field">
-    <label class="field__label" for="users">GitHub Users:</label>
-    <input class="field__input" type="text" id="users" />
-    <div class="field__instructions">
-        Comma-separated list of GitHub users whose public Gists will be made available for copying.
-    </div>
-</div>
+        <div class="status" id="status"></div>
+        <button class="button" id="save">Save</button>
 
-<div class="status" id="status"></div>
-<button class="button" id="save">Save</button>
-
-<script src="lib/github.js"></script>
-<script src="js/options.js"></script>
-</body>
+        <script src="lib/github.js"></script>
+        <script src="js/common.js"></script>
+        <script src="js/options.js"></script>
+    </body>
 </html>

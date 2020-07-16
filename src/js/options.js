@@ -11,34 +11,8 @@ function save_options() {
             status.textContent = '';
         }, 750);
 
-        update_gists_meta_data();
-    });
-}
-
-// fetch gists meta data from github
-function update_gists_meta_data() {
-    chrome.storage.sync.set({
-        gistsMeta: {}
-    }, function () {
-        chrome.storage.sync.get({
-            users: ''
-        }, function (items) {
-            if (items.users === '') {
-                return;
-            }
-
-            // fetch and store gists meta data for each user
-            items.users.split(",").forEach(function (user) {
-                github.pull_gists_metadata_for_user(user, function (userGistsMeta) {
-                    chrome.storage.sync.get({
-                        gistsMeta: {}
-                    }, function (items) {
-                        chrome.storage.sync.set({
-                            gistsMeta: {...items.gistsMeta, ...userGistsMeta}
-                        });
-                    });
-                });
-            });
+        update_gists_meta_data(function () {
+            // done
         });
     });
 }
